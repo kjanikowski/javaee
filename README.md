@@ -1,1 +1,1 @@
-# javaee
+# Krzysztof Janikowski
