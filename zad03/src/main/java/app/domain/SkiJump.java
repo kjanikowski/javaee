@@ -1,5 +1,6 @@
-package pl.kjanikowski.sklep.domain;
+package app.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SkiJump {
@@ -9,32 +10,32 @@ public class SkiJump {
 	private Date doc;
 	private boolean hasRecord;
 	
-	private int amount;
+	private int id=0;
 	
 	
 	public SkiJump(String name, double lenght, Date doc, boolean hasRecord) {
 		this.name=name;
 		this.lenght=lenght;
 		this.doc = doc;
-		this.hasRecord = hasRecord; 
+		this.hasRecord = hasRecord;
+		id++;
 	}
 	
 	
-	public int getAmount() {
-		return amount;
+	public int getid() {
+		return id;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setid(int amount) {
+		this.id = amount;
 	}
+
 	
-	public void add() {
-		this.amount++;
-	}
 	
-	public void bought() {
-		this.amount--;
+	public String getDate() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(doc).toString();
+		
 	}
-	
 	
 	
 	
