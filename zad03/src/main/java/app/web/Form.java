@@ -58,12 +58,12 @@ public class Form extends HttpServlet {
 		getServletContext().setAttribute("skijump", manager);
 			
 			
-		 out.println("<p><a href=\"http://localhost:8080/zad03/shop\">Wróæ do sklepu</a></p>");
+		 out.println("<br><br><br><a href=\"http://localhost:8080/zad03/shop\">Wroc do sklepu</a><br>");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			out.print("Niepoprawne badz niekompletne dane!");
-			 out.println("<p><a href=\"http://localhost:8080/zad03/add\">Wróc do dodawania skoczni</a></p>");
+			 out.println("<br><br><br><a href=\"http://localhost:8080/zad03/add\">Wroc do dodawania skoczni</a><br>");
 
 		}
 		out.close();

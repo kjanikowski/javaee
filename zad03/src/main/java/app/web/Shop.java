@@ -74,9 +74,9 @@ public class Shop extends HttpServlet {
 			manager.removeBasket(Integer.parseInt(request.getParameter("id")));
 
 
-		out.println("<br><br><a href=\"http://localhost:8080/zad03/shop\">Wróæ do sklepu</a><br><br>");
+		out.println("<br><br><a href=\"http://localhost:8080/zad03/shop\">Wroc do sklepu</a><br><br>");
 
-		out.println("Dodano!</body></html>");
+		out.println("Wykonano!</body></html>");
 		out.close();
 
 
