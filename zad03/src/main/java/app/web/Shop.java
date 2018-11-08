@@ -51,7 +51,7 @@ public class Shop extends HttpServlet {
 					+ "<input type=\"submit\" value=\"Dodaj do koszyka\"></form><br>");
 			i++;
 		}
-		out.println("<br><br><br><a href=\"http://localhost:8080/zad03/add\">Dodaj skocznie</a><br>");
+		out.println("<br><br><br><a href=\"http://localhost:8080/servletjspdemo/add\">Dodaj skocznie</a><br>");
 
 		out.println("</body></html>");
 		out.close();
@@ -74,7 +74,7 @@ public class Shop extends HttpServlet {
 			manager.removeBasket(Integer.parseInt(request.getParameter("id")));
 
 
-		out.println("<br><br><a href=\"http://localhost:8080/zad03/shop\">Wroc do sklepu</a><br><br>");
+		out.println("<br><br><a href=\"http://localhost:8080/servletjspdemo/shop\">Wroc do sklepu</a><br><br>");
 
 		out.println("Wykonano!</body></html>");
 		out.close();

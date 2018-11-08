@@ -52,7 +52,7 @@
 
     </dependencies>
     <build>
-        <finalName>zad03</finalName>
+        <finalName>servletjspdemo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -83,6 +83,6 @@
         </plugins>
     </build>
 
-    <artifactId>zad03</artifactId>
+    <artifactId>servletjspdemo</artifactId>
 </project>
 
