@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import app.domain.Newsletter;
 import app.service.NewsManager;
-import app.service.SkiJumpManager;
 @WebServlet("/news")
 public class News extends HttpServlet {
 

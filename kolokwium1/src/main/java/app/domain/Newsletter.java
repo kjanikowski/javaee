@@ -7,7 +7,6 @@ public class Newsletter {
 	
 	public Newsletter( String imie, Date from, Date to, String czest, String temat) {
 		super();
-		this.id = id;
 		this.imie = imie;
 		this.from = from;
 		this.to = to;
