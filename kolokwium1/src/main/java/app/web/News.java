@@ -53,9 +53,9 @@ public class News extends HttpServlet {
 				"Name: <input type='text' name='name' /> <br />" +
 				"From: <input type='date' name='from' /> <br />" +
 				"From: <input type='date' name='to' /> <br />" +
-				"<input type='radio' name='czest' value='dzien'>Dziennie<br />" +
-				"<input type='radio' name='czest' value='tyg'>Tygodniowo<br />" +
-				"<input type='radio' name='czest' value='mies'>Miesiecznie<br />" +
+				"<input type='radio' name='czest' value='codziennie'>Dziennie<br />" +
+				"<input type='radio' name='czest' value='tygodniowo'>Tygodniowo<br />" +
+				"<input type='radio' name='czest' value='miesiecznie'>Miesiecznie<br />" +
 				"<input type='checkbox' name='hobby' value='skocznie'>Interesuje sie skoczniami<br />" +
 				"<input type='checkbox' name='hobby' value='skoczkowie'>Interesuje sie skoczkami<br />" +
 				"<input type='checkbox' name='hobby' value='narty'>Interesuje sie nartami<br />" +
@@ -91,10 +91,16 @@ public class News extends HttpServlet {
 		long millisTo = dateTo.getTime();
 		Date dateF = new Date(millis);
 		Date dateFTo = new Date(millisTo);
+		String[] results = request.getParameterValues("hobby");
+		String result = "";
+		for (int i = 0; i < results.length; i++) {
+		    System.out.println(results[i]); 
+		    result = result +", "+ results[i];
+		}
 
 		
 		
-		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), request.getParameter("hobby")));
+		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), result));
 		session.setAttribute("news", man);
 		
 		
