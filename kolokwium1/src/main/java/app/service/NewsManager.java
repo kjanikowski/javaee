@@ -19,4 +19,8 @@ public class NewsManager {
 		list.add(news);
 		number++;
 	}
+	
+	public List<Newsletter> getList(){
+		return list;
+	}
 }

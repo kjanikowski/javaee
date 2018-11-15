@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import app.domain.Newsletter;
 import app.service.NewsManager;
@@ -25,11 +26,29 @@ public class News extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		response.setContentType("text/html");
-		if (getServletContext().getAttribute("news") == null)
-			getServletContext().setAttribute("news", new NewsManager());
+		HttpSession session = request.getSession();
+		if (session.getAttribute("news") == null)
+			session.setAttribute("news", new NewsManager());
+		
+		NewsManager man = (NewsManager) session.getAttribute("news");
+		int j =0;
+		
 		
 		PrintWriter out = response.getWriter();
-		out.println("<html><body><h2>Dodaj skocznie</h2>" +
+		
+		
+		out.print("<h3> Ustawienia: </h3>");
+		
+		while(man.getList().size()>j) {
+			out.print("Imie " + man.getList().get(j).getImie() + " subskrypcja od "
+					+ man.getList().get(j).getDateF() + " do: "
+					+ man.getList().get(j).getDateT() +" czestosc= "
+					+ man.getList().get(j).getCzest() + " zainteresowania: " + man.getList().get(j).getTemat() );
+
+			j++;
+		}
+		
+		out.println("<html><body><h2>Newsletter</h2>" +
 				"<form action=\"news\" method=\"post\">" +
 				"Name: <input type='text' name='name' /> <br />" +
 				"From: <input type='date' name='from' /> <br />" +
@@ -57,8 +76,11 @@ public class News extends HttpServlet {
 
 		try {
 		response.setContentType("text/html");
+		HttpSession session = request.getSession();
 		
-		NewsManager man = (NewsManager) getServletContext().getAttribute("news");
+		NewsManager man = (NewsManager) session.getAttribute("news");
+		
+		session.setAttribute("news",new NewsManager());
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date, dateTo;
@@ -72,8 +94,10 @@ public class News extends HttpServlet {
 
 		
 		
-		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), request.getParameter("czest")));
-		getServletContext().setAttribute("news", man);
+		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), request.getParameter("hobby")));
+		session.setAttribute("news", man);
+		
+		
 		
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

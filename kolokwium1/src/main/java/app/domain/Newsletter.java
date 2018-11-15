@@ -1,5 +1,6 @@
 package app.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Newsletter {
@@ -20,6 +21,18 @@ public class Newsletter {
 	Date to;
 	String czest;
 	String temat;
+	
+	public String getDateF() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(from).toString();
+		
+	}
+	
+	public String getDateT() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(to).toString();
+		
+	}
 	
 	public Date getFrom() {
 		return from;
