@@ -48,7 +48,7 @@ public class News extends HttpServlet {
 		}
 		
 		out.println("<html><body><h2>Newsletter</h2>" +
-				"<form action=\"news\" method=\"post\">" +
+				"<form action=\"newsletter\" method=\"post\">" +
 				"Name: <input type='text' name='name' /> <br />" +
 				"From: <input type='date' name='from' /> <br />" +
 				"From: <input type='date' name='to' /> <br />" +
