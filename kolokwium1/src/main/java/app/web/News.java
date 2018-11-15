@@ -2,12 +2,16 @@ package app.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.domain.Newsletter;
 import app.service.NewsManager;
 import app.service.SkiJumpManager;
 @WebServlet("/news")
@@ -26,7 +30,7 @@ public class News extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body><h2>Dodaj skocznie</h2>" +
-				"<form action=\"add\" method=\"post\">" +
+				"<form action=\"news\" method=\"post\">" +
 				"Name: <input type='text' name='name' /> <br />" +
 				"From: <input type='date' name='from' /> <br />" +
 				"From: <input type='date' name='to' /> <br />" +
@@ -51,13 +55,30 @@ public class News extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 
-		
+		try {
 		response.setContentType("text/html");
 		
 		NewsManager man = (NewsManager) getServletContext().getAttribute("news");
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date, dateTo;
+		
+		date = sdf.parse(request.getParameter("from"));
+		dateTo = sdf.parse(request.getParameter("to"));
+		long millis = date.getTime();
+		long millisTo = dateTo.getTime();
+		Date dateF = new Date(millis);
+		Date dateFTo = new Date(millisTo);
+
 		
 		
+		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), request.getParameter("czest")));
+		getServletContext().setAttribute("news", man);
+		
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

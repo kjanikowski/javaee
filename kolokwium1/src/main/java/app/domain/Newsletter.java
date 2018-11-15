@@ -1,10 +1,10 @@
 package app.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Newsletter {
 	
-	public Newsletter(int id, String imie, Date from, Date to, String czest, String temat) {
+	public Newsletter( String imie, Date from, Date to, String czest, String temat) {
 		super();
 		this.id = id;
 		this.imie = imie;
