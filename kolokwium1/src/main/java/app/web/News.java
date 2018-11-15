@@ -103,6 +103,8 @@ public class News extends HttpServlet {
 		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), result));
 		session.setAttribute("news", man);
 		
+		out.println("<br><br><a href=\"http://localhost:8080/kolo/news\">Wroc do newslettera</a><br><br>");
+
 		
 		
 		} catch (ParseException e) {
