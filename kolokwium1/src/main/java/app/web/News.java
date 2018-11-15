@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import app.domain.Newsletter;
 import app.service.NewsManager;
-@WebServlet("/news")
+@WebServlet("/newsletter")
 public class News extends HttpServlet {
 
 	/**
@@ -102,7 +102,7 @@ public class News extends HttpServlet {
 		man.addNews(new Newsletter( request.getParameter("name"), dateF, dateFTo, request.getParameter("czest"), result));
 		session.setAttribute("news", man);
 		
-		out.println("<br><br><a href=\"http://localhost:8080/kolo/news\">Wroc do newslettera</a><br><br>");
+		out.println("<br><br><a href=\"http://localhost:8080/kolo/newsletter\">Wroc do newslettera</a><br><br>");
 
 		
 		
