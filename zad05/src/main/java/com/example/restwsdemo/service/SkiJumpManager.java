@@ -1,8 +1,8 @@
 package com.example.restwsdemo.service;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ejb.Singleton;
 
@@ -10,26 +10,30 @@ import com.example.restwsdemo.domain.SkiJump;
 @Singleton
 public class SkiJumpManager {
 	
-	private List<SkiJump> list = Collections.synchronizedList(new ArrayList<SkiJump>());
+	private Map<Long,SkiJump> map = Collections.synchronizedMap(new HashMap<Long,SkiJump>());
+	long i = 0;
+
+	
 	
 	public void addSkiJump(SkiJump skiJump) {
-		list.add(skiJump);
+		map.put(i, skiJump);
+		i++;
 	}
 	
-	public void removeSkiJump(SkiJump skiJump) {
-		list.remove(skiJump);
+	public void removeSkiJump(long id) {
+		map.remove(id);
 	}
 	
 	public SkiJump getSkiJump(long id) {
-		return new SkiJump("Skocznia w Wisle", 138.5);
+		return map.get(id);
 	}
 	
-	public List<SkiJump> getAllSkiJumps(){
-		return list;
+	public Map<Long,SkiJump> getAllSkiJumps(){
+		return map;
 	}
 	
 	public void deleteAll() {
-		list.clear();
+		map.clear();
 	}
 
 }
