@@ -65,6 +65,7 @@ public class MonitorManager {
 	
 	public void clear() {
 		list.clear();
+		number=0;
 	}
 	
 	

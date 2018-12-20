@@ -59,7 +59,7 @@ public class Buy extends HttpServlet  {
 		HttpSession session = request.getSession();
 
 		MonitorManager manager = (MonitorManager) getServletContext().getAttribute("basket");
-		MonitorManager managerb = (MonitorManager) session.getAttribute("monitor");
+		MonitorManager managerb = (MonitorManager) session.getAttribute("basket");
 
 		
 		if(request.getParameter("action").equals("addToBasket"))
