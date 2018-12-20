@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import app.domain.Monitor;
 import app.service.MonitorManager;
 
 @WebServlet("/shop")
@@ -24,19 +25,20 @@ public class Shop extends HttpServlet {
 		out.println("<html><body>");
 		if (getServletContext().getAttribute("monitor") == null)
 			getServletContext().setAttribute("monitor", new MonitorManager());
-		if (getServletContext().getAttribute("basket") == null)
-			getServletContext().setAttribute("basket", new MonitorManager());
+		if (session.getAttribute("basket") == null)
+			session.setAttribute("basket", new MonitorManager());
 
 		MonitorManager manager = (MonitorManager) getServletContext().getAttribute("monitor");
+		MonitorManager managerb = (MonitorManager) session.getAttribute("basket");
 		int j =0;
 		out.println("<h3> Koszyk: </h3>");
-		while (manager.getBasketList().size() > j) {
-			out.print("Monitor " + manager.getBasketList().get(j).getName() + " o dlugosci "
-					+ manager.getBasketList().get(j).getLenght() + " wyprodukowany dnia: "
-					+ manager.getBasketList().get(j).getDate() +" marka= "
-					+ manager.getBasketList().get(j).getMarka() + " cechy monitora= " + manager.getBasketList().get(j).getCechy());
+		while (managerb.getList().size() > j) {
+			out.print("Monitor " + managerb.getList().get(j).getName() + " o dlugosci "
+					+ managerb.getList().get(j).getLenght() + " wyprodukowany dnia: "
+					+ managerb.getList().get(j).getDate() +" marka= "
+					+ managerb.getList().get(j).getMarka() + " cechy monitora= " + managerb.getList().get(j).getCechy());
 					out.print("<form action=\"shop\" method=\"post\">" + "<input type=\"hidden\" name=\"id\" value=\""
-					+ manager.getBasketList().get(j).getid() + "\">" + "<input type= \"hidden\" name =\"action\" value=\"removeFromBasket\">"	
+					+ managerb.getList().get(j).getid() + "\">" + "<input type= \"hidden\" name =\"action\" value=\"removeFromBasket\">"	
 					+ "<input type=\"submit\" value=\"Usun z koszyka\"></form><br>");
 			j++;
 		}
@@ -63,20 +65,30 @@ public class Shop extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		response.setContentType("text/html");
-
+		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 
 
 		MonitorManager manager = (MonitorManager) getServletContext().getAttribute("monitor");
+		MonitorManager managerb = (MonitorManager) session.getAttribute("basket");
+		Monitor m = null;
 		
 		if(request.getParameter("action").equals("addToBasket"))
-			manager.addBasket(Integer.parseInt(request.getParameter("id")));
+			if(session.getAttribute("basket") != null) {
+			m = manager.getList().get(Integer.parseInt(request.getParameter("id")));
+			managerb.addMonitor(m);
+			manager.remove(Integer.parseInt(request.getParameter("id")));
+			}
 			
-		if(request.getParameter("action").equals("removeFromBasket"))
-			manager.removeBasket(Integer.parseInt(request.getParameter("id")));
+		if(request.getParameter("action").equals("removeFromBasket")) {
+			m = managerb.getList().get(Integer.parseInt(request.getParameter("id")));
+			manager.addMonitor(m);
+			managerb.remove(Integer.parseInt(request.getParameter("id")));
+		}
 		
 		getServletContext().setAttribute("monitor", manager);
+		session.setAttribute("basket", managerb);
 
 
 		out.println("<br><br><a href=\"http://localhost:8080/servletjspdemo/shop\">Wroc do sklepu</a><br><br>");

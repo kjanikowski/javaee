@@ -52,21 +52,20 @@ public class MonitorManager {
 	}
 	
 	public void remove(int id) {
-		int i=0;
-		while(list.size() > i) {
-			if (list.get(i).getid() == id) {
-				list.add(list.get(i));
-				list.remove(i);
+
+				list.remove(id);
+				number--;
 				
-			}
-			i++;
-		}
+
 	}
 	
 	public void clearBasket() {
 		basketList.clear();
 	}
 	
+	public void clear() {
+		list.clear();
+	}
 	
 	
 	
