@@ -1,9 +1,12 @@
 package com.example.restejbjpa.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,9 +19,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 })
 public class SkiJump {
 
-	long id;
-	String nazwa;
-	double rekord;
+	private long id;
+	private String nazwa;
+	private double rekord;
+	private City city;
+	
+	public SkiJump(long id, String nazwa, double rekord, City city) {
+		super();
+		this.id = id;
+		this.nazwa = nazwa;
+		this.rekord = rekord;
+		this.city = city;
+	}
 	public SkiJump(String nazwa, double rekord) {
 		super();
 		this.nazwa = nazwa;
@@ -30,7 +42,7 @@ public class SkiJump {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -48,6 +60,20 @@ public class SkiJump {
 	}
 	public void setRekord(double rekord) {
 		this.rekord = rekord;
+	}
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
+	}
+	
+	@Override
+	public String toString() {
+		return nazwa + rekord + city.name;
+		
 	}
 	
 	

@@ -53,7 +53,9 @@ public class SkiJumpRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addSkiJump(SkiJump skiJump) {
+		System.out.println(skiJump.toString());
 		manager.addSkiJump(skiJump);
+		
 		
 		return Response.status(201).entity("SkiJump").build();
 	}
