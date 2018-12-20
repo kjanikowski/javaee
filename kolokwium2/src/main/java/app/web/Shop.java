@@ -40,18 +40,19 @@ public class Shop extends HttpServlet {
 		}
 
 		int i = 0;
-		out.println("<h3> Lista skoczni do kupienia: </h3>");
+		out.println("<h3> Lista monitorow do kupienia: </h3>");
 		while (manager.getList().size() > i) {
-			out.print("Monitor " + manager.getBasketList().get(j).getName() + " o dlugosci "
-					+ manager.getBasketList().get(j).getLenght() + " wyprodukowany dnia: "
-					+ manager.getBasketList().get(j).getDate() +" marka= "
-					+ manager.getBasketList().get(j).getMarka() + " cechy monitora= " + manager.getBasketList().get(j).getCechy());
+			out.print("Monitor " + manager.getList().get(i).getName() + " o dlugosci "
+					+ manager.getList().get(i).getLenght() + " wyprodukowany dnia: "
+					+ manager.getList().get(i).getDate() +" marka= "
+					+ manager.getList().get(i).getMarka() + " cechy monitora= " + manager.getList().get(i).getCechy());
 			out.print("<form action=\"shop\" method=\"post\">" + "<input type=\"hidden\" name=\"id\" value=\""
 					+ manager.getList().get(i).getid() + "\">" + "<input type= \"hidden\" name =\"action\" value=\"addToBasket\">"	
 					+ "<input type=\"submit\" value=\"Dodaj do koszyka\"></form><br>");
 			i++;
 		}
-		out.println("<br><br><br><a href=\"http://localhost:8080/servletjspdemo/add\">Dodaj skocznie</a><br>");
+		out.println("<br><br><br><a href=\"http://localhost:8080/servletjspdemo/add\">Dodaj monitor</a><br>");
+		out.println("<br><br><a href=\"http://localhost:8080/servletjspdemo/buy\">Realizacja zamowienia</a><br><br>");
 
 		out.println("</body></html>");
 		out.close();

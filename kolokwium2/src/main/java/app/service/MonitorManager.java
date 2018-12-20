@@ -47,6 +47,10 @@ public class MonitorManager {
 		}
 	}
 	
+	public void clearBasket() {
+		basketList.clear();
+	}
+	
 	
 	
 	

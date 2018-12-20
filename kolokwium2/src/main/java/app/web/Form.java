@@ -29,9 +29,9 @@ public class Form extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><body><h2>Dodaj Monitor</h2>" +
 				"<form action=\"add\" method=\"post\">" +
-				"Ski jump name: <input type='text' name='name' /> <br />" +
-				"Lenght: <input type='text' name='dlug' /> <br />" +
-				"Date of competition: <input type='date' name='doc' /> <br />" +
+				"Nazwa: <input type='text' name='name' /> <br />" +
+				"Dlugosc: <input type='text' name='dlug' /> <br />" +
+				"Data produkcji: <input type='date' name='doc' /> <br />" +
 				"<input type='radio' name='marka' value='Samsung'>Samsung<br />" +
 				"<input type='radio' name='marka' value='LG'>LG<br />" +
 				"<input type='checkbox' name='cechy' value='HD'>Interesuje sie skoczniami<br />" +
