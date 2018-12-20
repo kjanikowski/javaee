@@ -27,7 +27,7 @@ public class Buy extends HttpServlet  {
 		if (getServletContext().getAttribute("basket") == null)
 			getServletContext().setAttribute("basket", new MonitorManager());
 		
-		MonitorManager manager = (MonitorManager) getServletContext().getAttribute("basket");
+		MonitorManager manager = (MonitorManager) getServletContext().getAttribute("monitor");
 		int j =0;
 		out.println("<h3> Koszyk: </h3>");
 		while (manager.getBasketList().size() > j) {
@@ -61,7 +61,7 @@ public class Buy extends HttpServlet  {
 		if(request.getParameter("action").equals("addToBasket"))
 			manager.clearBasket();
 			
-
+		getServletContext().setAttribute("monitor", manager);
 
 		out.println("<br><br><a href=\"http://localhost:8080/servletjspdemo/shop\">Wroc do sklepu</a><br><br>");
 

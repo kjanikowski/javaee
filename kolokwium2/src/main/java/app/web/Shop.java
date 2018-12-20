@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import app.service.MonitorManager;
 
@@ -19,6 +20,7 @@ public class Shop extends HttpServlet {
 		response.setContentType("text/html");
 
 		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
 		out.println("<html><body>");
 		if (getServletContext().getAttribute("monitor") == null)
 			getServletContext().setAttribute("monitor", new MonitorManager());
@@ -73,6 +75,8 @@ public class Shop extends HttpServlet {
 			
 		if(request.getParameter("action").equals("removeFromBasket"))
 			manager.removeBasket(Integer.parseInt(request.getParameter("id")));
+		
+		getServletContext().setAttribute("monitor", manager);
 
 
 		out.println("<br><br><a href=\"http://localhost:8080/servletjspdemo/shop\">Wroc do sklepu</a><br><br>");

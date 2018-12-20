@@ -35,12 +35,28 @@ public class MonitorManager {
 		}
 	}
 	
+	
+	
+	
+	
 	public void removeBasket(int id) {
 		int i=0;
 		while(basketList.size() > i) {
 			if (basketList.get(i).getid() == id) {
 				list.add(basketList.get(i));
 				basketList.remove(i);
+				
+			}
+			i++;
+		}
+	}
+	
+	public void remove(int id) {
+		int i=0;
+		while(list.size() > i) {
+			if (list.get(i).getid() == id) {
+				list.add(list.get(i));
+				list.remove(i);
 				
 			}
 			i++;
