@@ -1,2 +1,1 @@
-# restejbjpa
-Demo project for Java EE Technologies course.
+# lab6
