@@ -5,7 +5,7 @@
       http://java.sun.com/xml/ns/persistence
       http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 
-	<persistence-unit name="demoPU">
+	<persistence-unit name="AAA">
 
 		<!-- You can force a non-default JPA provider using one of these declarations -->
 		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
@@ -15,7 +15,7 @@
 		<!-- <jta-data-source>jdbc/demoapps</jta-data-source> -->
 
 		<!-- Wildfly -->
-		<jta-data-source>java:/jdbc/DemoappDS</jta-data-source>
+		<jta-data-source>java:/jdbc/AAA</jta-data-source>
 
 		<properties>
 			<!-- Properties for Hibernate (default provider for JBoss AS) -->

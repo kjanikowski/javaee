@@ -5,7 +5,9 @@ import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -19,15 +21,15 @@ import javax.ws.rs.core.Response;
 
 import com.example.restejbjpa.domain.SkiJump;
 import com.example.restejbjpa.service.SkiJumpManager;
+import com.example.restejbjpa.service.SkiJumpManagerInterface;
 
 
 
 @Path(value = "skijump")
-@Stateless
 public class SkiJumpRest {
 
 	@EJB
-	SkiJumpManager manager;
+	SkiJumpManagerInterface manager;
 	
 	@GET
 	@Path(value = "/{SkiJumpID}")
@@ -38,6 +40,13 @@ public class SkiJumpRest {
 	}
 	
 	@GET
+	@Path(value = "/{CompName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<SkiJump> getSkiJumpByComp(@PathParam("CompName") String name) {
+		return manager.getAllByCompetition(name);
+	}
+	
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<SkiJump> getSkiJumps(){
 		return manager.getAllSkiJumps();
@@ -45,7 +54,7 @@ public class SkiJumpRest {
 	
 	@GET
 	@Path("/test")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String test(){
 		return "REST Persons Service is running now!";
 	}
@@ -53,16 +62,14 @@ public class SkiJumpRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addSkiJump(SkiJump skiJump) {
-		System.out.println(skiJump.toString());
 		manager.addSkiJump(skiJump);
-		
-		
 		return Response.status(201).entity("SkiJump").build();
 	}
 	
 	@DELETE
-	public Response deleteSkiJump() {
-		manager.deleteAll();
+	@Path(value = "/{SkiJumpID}")
+	public Response deleteSkiJump(@PathParam("SkiJumpID") long id) {
+		manager.removeSkiJump(id);
 		return Response.status(200).build();
 	}
 	

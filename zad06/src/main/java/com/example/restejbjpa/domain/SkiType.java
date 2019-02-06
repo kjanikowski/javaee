@@ -9,37 +9,37 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-public class City {
+public class SkiType {
 	
-	String name; 
-	long id; 
+	private long id;
+	private String type;
 	
-	public City(String name) {
+	public SkiType(String type) {
 		super();
-		this.name = name;
+		this.type = type;
 	}
 
-	public City() {
+	public SkiType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Column(unique = true)
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	@Column(unique = true)
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 
 
