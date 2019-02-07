@@ -40,10 +40,17 @@ public class SkiJumpRest {
 	}
 	
 	@GET
-	@Path(value = "/{CompName}")
+	@Path(value = "/byComp/{CompName}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<SkiJump> getSkiJumpByComp(@PathParam("CompName") String name) {
 		return manager.getAllByCompetition(name);
+	}
+	
+	@GET
+	@Path(value = "/byCity/{City}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public SkiJump getSkiJumpByCity(@PathParam("City") String city) {
+		return manager.getByCity(city);
 	}
 	
 	@GET

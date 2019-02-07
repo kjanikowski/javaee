@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "114acfd2-d506-4bd7-b8a2-1d1ed866b785",
+		"name": "Zaliczenie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Skocznia im Adama Malysza\",\n\t\"size\": 132,\n\t\"doc\": \"1999-03-15\",\n\t\"hasRecord\": true,\n\t\"city\": {\n\t\t\"name\": \"Zgierz\"\n\t},\n\t\"skiType\": {\n\t\t\"type\": \"Mala\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/skijump/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"skijump",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/skijump/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"skijump",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllComp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/competition/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"competition",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddComp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"competitionName\": \"Puchar Swiata\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/competition/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"competition",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSkiJumpToComp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/competition/4/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"competition",
+						"4",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPuchar Swiata",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/skijump/byComp/Puchar Swiata/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"skijump",
+						"byComp",
+						"Puchar Swiata",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/skijump/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"skijump",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/skijump/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"skijump",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCompByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/competition/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"competition",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DelComp",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/competition/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"competition",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByCity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/skijump/byCity/Zgierz/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"skijump",
+						"byCity",
+						"Zgierz",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

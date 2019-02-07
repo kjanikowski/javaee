@@ -95,7 +95,7 @@ public class SkiJump {
 		this.hasRecord = hasRecord;
 	}
 
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public City getCity() {
 		return city;
 	}
@@ -104,7 +104,7 @@ public class SkiJump {
 		this.city = city;
 	}
 	@JsonBackReference
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	public List<Competition> getCompetition() {
 		return competition;
 	}
@@ -113,7 +113,7 @@ public class SkiJump {
 		this.competition = competition;
 	}
 
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public SkiType getSkiType() {
 		return skiType;
 	}

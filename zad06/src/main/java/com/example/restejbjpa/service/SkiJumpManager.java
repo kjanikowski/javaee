@@ -37,7 +37,7 @@ public class SkiJumpManager implements SkiJumpManagerInterface {
 
 	@Override
 	public SkiJump getByCity(String city) {
-		return (SkiJump) em.createNamedQuery("skiJump.getByName").setParameter("name", city).getSingleResult();
+		return (SkiJump) em.createNamedQuery("skiJump.getByCity").setParameter("name", city).getSingleResult();
 	}
 
 	@Override
