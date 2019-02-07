@@ -56,7 +56,7 @@ public class SkiJumpRest {
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String test(){
-		return "REST Persons Service is running now!";
+		return "REST SkiJump Service is running now!";
 	}
 	
 	@POST

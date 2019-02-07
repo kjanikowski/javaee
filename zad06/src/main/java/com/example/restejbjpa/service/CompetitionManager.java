@@ -41,7 +41,11 @@ public class CompetitionManager {
 	
 	@SuppressWarnings("unchecked")
 	public List<Competition> getAllCompetition() {
-		return em.createNamedQuery("competition.getAll").getResultList();
+		List<Competition> list = em.createNamedQuery("competition.getAll").getResultList();
+		for(Competition comp : list) {
+			comp.getSkijumps().size();
+		}
+		return list;
 	}
 
 }
